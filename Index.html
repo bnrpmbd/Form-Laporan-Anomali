@@ -1,0 +1,602 @@
+<!-- HTML FORM DINAMIS: Laporan Pagi & Sore -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base target="_top">
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        margin-left: 100px;
+        margin-right: 100px;
+        padding: 10;
+      }
+      h2 {
+        font-size: 200%;
+        border-bottom: 3px solid black;
+        padding-bottom: 20px;
+      }
+      h3 {
+        font-size: 160%;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 10px;
+      }
+      h4 {
+        font-size: 130%;
+      }
+      label {
+        font-weight: bold;
+        display: block;
+        margin-top: 20px;
+      }
+      select, input, text area {
+        width: 100%;
+        margin-top: 5px;
+        padding: 5px;
+        box-sizing: border-box;
+      }
+      button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+        font-size: 25px;
+        width: 50%;
+        transition: background-color 0.3s;
+      }
+      button.clicked {
+        background-color: #2E7D32;
+      }
+      .center-button {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+        margin-bottom: 50px;
+      }
+      .input-number, .status, .input-text {
+        font-size: 15px;
+        margin-top: 5px;
+        padding: 5px;
+        box-sizing: border-box;
+      }
+      .hidden { 
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <h2 style="text-align:center;">LAPORAN REALISASI PENYELESAIAN ANOMALI "GADA ANOMAN" UIT JBB</h2>
+
+    <form id="anomaliForm">
+      <input type="hidden" name="Waktu Pemeriksaan" id="waktuPemeriksaan" />
+
+      <label for="menu" style="font-size:150%;">LAPORAN:</label>
+      <select class="status" id="menu" name="LAPORAN">
+        <option value="">--Pilih--</option>
+        <option value="pagi">Pagi</option>
+        <option value="sore">Sore</option>
+      </select>
+
+      <label for="tanggal" style="font-size:150%;">Hari/Tanggal:</label>
+      <input class="input-text" type="text" id="tanggal" name="Hari/Tanggal" placeholder="cth: Senin, 21 Juli 2025">
+
+      <label for="upt" style="font-size:150%;">UPT:</label>
+      <input class="input-text" type="text" id="upt" name="UPT">
+
+      <!-- FORM PAGI -->
+      <div id="formPagi" class="hidden">
+        <h3>A. ANOMALI JARINGAN</h3>
+        <h4>1. ROW Kritis</h4>
+        <h4>Jumlah Anomali (Pohon)</h4>
+      
+        <label for="kritis">Kritis:</label>
+        <input class="input-number" type="number" id="pagi-kritis" name="ROW Kritis - Kritis" placeholder="0" required>
+
+        <label for="b1">Bahaya 1 (B1):</label>
+        <input class="input-number" type="number" id="pagi-bahaya" name="ROW Kritis - Bahaya 1" placeholder="0" required>
+
+        <label for="rtl">Rencana Tindak Lanjut:</label>
+        <input class="input-number" type="number" id="pagi-rtl" name="ROW Kritis - Rencana Tindak lanjut" placeholder="0" required>
+
+        <h4>Rencana Tindak Lanjut Hari Ini (Pohon)</h4>
+      
+        <label for="kritis">Kritis:</label>
+        <input class="input-number" type="number" id="pagi-kritis1" name="ROW Kritis - Rencana Hari ini - Kritis" placeholder="0" required>
+
+        <label for="b1">Bahaya (B1):</label>
+        <input class="input-number" type="number" id="pagi-bahaya1" name="ROW Kritis - Rencana Hari ini - Bahaya (B1)" placeholder="0" required>
+
+        <h4>Realisasi Hari Ini (Pohon)</h4>
+
+        <label for="kritis">Kritis:</label>
+        <input class="input-number" type="number" id="pagi-kritis2" name="ROW Kritis - Realisasi Hari ini - Kritis" placeholder="0" required>
+
+        <label for="b1">Bahaya 1:</label>
+        <input class="input-number" type="number" id="pagi-bahaya2" name="ROW Kritis - Realisasi Hari ini - Bahaya 1" placeholder="0" required>
+
+        <label for="pilihan">STATUS:</label>
+          <select class="status" id="pilihan-kritis" name="ROW Kritis - STATUS">
+            <option value="melebihi">Melebihi</option>
+            <option value="sesuai">Sesuai</option>
+            <option value="dibawah_target">Dibawah Target</option>
+          </select>
+
+        <h4>2. Pentanahan Tower Buruk (Tower)</h4>
+
+        <label for="jumlah_anomali">Jumlah Anomali:</label>
+        <input class="input-number" type="number" id="pagi-jumlah_anomali" name="Pentanahan Tower - Jumlah Anomali" placeholder="0" required>
+      
+        <label for="rtl">Rencana Tindak Lanjut:</label>
+        <input class="input-number" type="number" id="pagi-rtl1" name="Pentanahan Tower - Rencana Tindak lanjut" placeholder="0" required>
+
+        <label for="rhi">Rencana Hari Ini:</label>
+        <input class="input-number" type="number" id="pagi-rhi" name="Pentanahan Tower - Rencana Hari ini" placeholder="0" required>
+
+        <label for="realisasi_hi">Realisasi Hari Ini:</label>
+        <input class="input-number" type="number" id="pagi-realisasi_hi" name="Pentanahan Tower - Realisasi Hari ini" placeholder="0" required>
+
+        <label for="pilihan">STATUS:</label>
+          <select class="status" id="pilihan-tower" name="Pentanahan Tower - STATUS">
+            <option value="melebihi">Melebihi</option>
+            <option value="sesuai">Sesuai</option>
+            <option value="dibawah_target">Dibawah Target</option>
+          </select>
+
+        <h4>3. Anomali Isolator(String)</h4>
+
+        <label for="jumlah_anomali">Jumlah Anomali:</label>
+        <input class="input-number" type="number" id="pagi-jumlah_anomali1" name="Isolator - Jumlah Anomali" placeholder="0" required>
+
+        <label for="rtl">Rencana Tindak Lanjut:</label>
+        <input class="input-number" type="number" id="pagi-rtl2" name="Isolator - Rencana Tindak lanjut" placeholder="0" required>
+
+        <label for="rhi">Rencana Hari Ini:</label>
+        <input class="input-number" type="number" id="pagi-rhi1" name="Isolator - Rencana Hari ini" placeholder="0" required>
+
+        <label for="realisasi_hi">Realisasi Hari Ini:</label>
+        <input class="input-number" type="number" id="pagi-realisasi_hi1" name="Isolator - Realisasi Hari ini" placeholder="0" required>
+
+        <label for="pilihan">STATUS:</label>
+          <select class="status" id="pilihan-isolator" name="Isolator - STATUS">
+            <option value="melebihi">Melebihi</option>
+            <option value="sesuai">Sesuai</option>
+            <option value="dibawah_target">Dibawah Target</option>
+          </select>
+        
+        <br><br><br><br>
+        <h3>B. ANOMALI HARGI</h3>
+        
+        <h4>1. Hotspot HV Peraltan Primer (Titik)</h4>
+
+        <label for="jumlah_anomali">Jumlah Anomali:</label>
+        <input class="input-number" type="number" id="pagi-jumlah_anomali2" name="Hotspot HV - Jumlah Anomali" placeholder="0" required>
+
+        <label for="rtl">Rencana Tindak Lanjut:</label>
+        <input class="input-number" type="number" id="pagi-rtl3" name="Hotspot HV - Rencana Tindak lanjut" placeholder="0" required>
+
+        <label for="rhi">Rencana Hari Ini:</label>
+        <input class="input-number" type="number" id="pagi-rhi2" name="Hotspot HV - Rencana Hari ini" placeholder="0" required>
+
+        <label for="realisasi_hi">Realisasi Hari Ini:</label>
+        <input class="input-number" type="number" id="pagi-realisasi_hi2" name="Hotspot HV - Realisasi Hari ini" placeholder="0" required>
+
+        <label for="pilihan">STATUS:</label>
+          <select class="status" id="pilihan-hotspot" name="Hotspot HV - STATUS">
+            <option value="melebihi">Melebihi</option>
+            <option value="sesuai">Sesuai</option>
+            <option value="dibawah_target">Dibawah Target</option>
+          </select>
+
+        <h4>2. Anomali MTU Non Hotspot (MTU)</h4>
+
+        <label for="jumlah_anomali">Jumlah Anomali:</label>
+        <input class="input-number" type="number" id="pagi-jumlah_anomali3" name="MTU - Jumlah Anomali" placeholder="0" required>
+
+        <label for="rtl">Rencana Tindak Lanjut:</label>
+        <input class="input-number" type="number" id="pagi-rtl4" name="MTU - Rencana Tindak lanjut" placeholder="0" required>
+
+        <label for="rhi">Rencana Hari Ini:</label>
+        <input class="input-number" type="number" id="pagi-rhi3" name="MTU - Rencana Hari ini" placeholder="0" required>
+
+        <label for="realisasi_hi">Realisasi Hari Ini:</label>
+        <input class="input-number" type="number" id="pagi-realisasi_hi3" name="MTU - Realisasi Hari ini" placeholder="0" required>
+
+        <label for="pilihan">STATUS:</label>
+          <select class="status" id="pilihan-mtu" name="MTU - STATUS">
+            <option value="melebihi">Melebihi</option>
+            <option value="sesuai">Sesuai</option>
+            <option value="dibawah_target">Dibawah Target</option>
+          </select>
+
+        <h4>3. Pentanahan Gardu Induk (Titik)</h4>
+
+        <label for="jumlah_anomali">Jumlah Anomali:</label>
+        <input class="input-number" type="number" id="pagi-jumlah_anomali4" name="Pentanahan GI - Jumlah Anomali" placeholder="0" required>
+
+        <label for="rtl">Rencana Tindak Lanjut:</label>
+        <input class="input-number" type="number" id="pagi-rtl5" name="Pentanahan GI - Rencana Tindak lanjut" placeholder="0" required>
+
+        <label for="rhi">Rencana Hari Ini:</label>
+        <input class="input-number" type="number" id="pagi-rhi4" name="Pentanahan GI - Rencana Hari ini" placeholder="0" required>
+
+        <label for="realisasi_hi">Realisasi Hari Ini:</label>
+        <input class="input-number" type="number" id="pagi-realisasi_hi4" name="Pentanahan GI - Realisasi Hari ini" placeholder="0" required>
+
+        <label for="pilihan">STATUS:</label>
+          <select class="status" id="pilihan-pentanahan" name="Pentanahan GI - STATUS">
+            <option value="melebihi">Melebihi</option>
+            <option value="sesuai">Sesuai</option>
+            <option value="dibawah_target">Dibawah Target</option>
+          </select>
+        
+        <br><br><br><br>
+        <h3>C. ANOMALI HARPRO</h3>
+        <h4>1. Relay Error (Unit)</h4>
+
+        <label for="jumlah_anomali">Jumlah Anomali:</label>
+        <input class="input-number" type="number" id="pagi-jumlah_anomali5" name="Relay - Jumlah Anomali" placeholder="0" required>
+
+        <label for="rtl">Rencana Tindak Lanjut:</label>
+        <input class="input-number" type="number" id="pagi-rtl6" name="Relay - Rencana Tindak lanjut" placeholder="0" required>
+
+        <label for="rhi">Rencana Hari Ini:</label>
+        <input class="input-number" type="number" id="pagi-rhi5" name="Relay - Rencana Hari ini" placeholder="0" required>
+
+        <label for="realisasi_hi">Realisasi Hari Ini:</label>
+        <input class="input-number" type="number" id="pagi-realisasi_hi5" name="Relay - Realisasi Hari ini" placeholder="0" required>
+
+        <label for="pilihan">STATUS:</label>
+          <select class="status" id="pilihan-relay" name="Relay - STATUS">
+            <option value="melebihi">Melebihi</option>
+            <option value="sesuai">Sesuai</option>
+            <option value="dibawah_target">Dibawah Target</option>
+          </select>
+
+        <h4>2. HotSpot Rangkaian Sekunder (Titik)</h4>
+
+        <label for="jumlah_anomali">Jumlah Anomali:</label>
+        <input class="input-number" type="number" id="pagi-jumlah_anomali6" name="Hotspot Sekunder - Jumlah Anomali" placeholder="0" required>
+
+        <label for="rtl">Rencana Tindak Lanjut:</label>
+        <input class="input-number" type="number" id="pagi-rtl7" name="Hotspot Sekunder - Rencana Tindak lanjut" placeholder="0" required>
+
+        <label for="rhi">Rencana Hari Ini:</label>
+        <input class="input-number" type="number" id="pagi-rhi6" name="Hotspot Sekunder - Rencana Hari ini" placeholder="0" required>
+
+        <label for="realisasi_hi">Realisasi Hari Ini:</label>
+        <input class="input-number" type="number" id="pagi-realisasi_hi6" name="Hotspot Sekunder - Realisasi Hari ini" placeholder="0" required>
+
+        <label for="pilihan">STATUS:</label>
+          <select class="status" id="pilihan-sekunder" name="Hotspot Sekunder - STATUS">
+            <option value="melebihi">Melebihi</option>
+            <option value="sesuai">Sesuai</option>
+            <option value="dibawah_target">Dibawah Target</option>
+          </select>
+      </div>
+
+      <!-- FORM SORE -->
+      <div id="formSore" class="hidden">
+        <h3>A. ANOMALI JARINGAN</h3>
+        <h4>1. ROW Kritis</h4>
+        <h4>Jumlah Anomali (Pohon)</h4>
+      
+        <label for="kritis">Kritis:</label>
+        <input class="input-number" type="number" id="sore-kritis" name="ROW Kritis - Kritis" placeholder="0" required>
+
+        <label for="bahaya1">Bahaya 1 (B1):</label>
+        <input class="input-number" type="number" id="sore-bahaya" name="ROW Kritis - Bahaya 1" placeholder="0" required>
+
+        <label for="rtl">Rencana Tindak Lanjut:</label>
+        <input class="input-number" type="number" id="sore-rtl" name="ROW Kritis - Rencana Tindak lanjut" placeholder="0" required>
+
+        <h4>Rencana Tindak Lanjut Hari Ini (Pohon)</h4>
+      
+        <label for="kritis">Kritis:</label>
+        <input class="input-number" type="number" id="sore-kritis1" name="ROW Kritis - Rencana Hari ini - Kritis" placeholder="0" required>
+
+        <label for="b1">Bahaya (B1):</label>
+        <input class="input-number" type="number" id="sore-bahaya1" name="ROW Kritis - Rencana Hari ini - Bahaya (B1)" placeholder="0" required>
+
+        <label for="pilihan">STATUS:</label>
+          <select class="status" id="pilihan-kritis1" name="ROW Kritis - STATUS">
+            <option value="melebihi">Melebihi</option>
+            <option value="sesuai">Sesuai</option>
+            <option value="dibawah_target">Dibawah Target</option>
+          </select>
+
+        <h4>2. Pentanahan Tower Buruk (Tower)</h4>
+
+        <label for="jumlah_anomali">Jumlah Anomali:</label>
+        <input class="input-number" type="number" id="sore-jumlah_anomali" name="Pentanahan Tower - Jumlah Anomali" placeholder="0" required>
+      
+        <label for="rtl">Rencana Tindak Lanjut:</label>
+        <input class="input-number" type="number" id="sore-rtl1" name="Pentanahan Tower - Rencana Tindak lanjut" placeholder="0" required>
+
+        <label for="rhi">Rencana Hari Ini:</label>
+        <input class="input-number" type="number" id="sore-rhi" name="Pentanahan Tower - Rencana Hari ini" placeholder="0" required>
+
+        <label for="realisasi_hi">Realisasi Hari Ini:</label>
+        <input class="input-number" type="number" id="sore-realisasi_hi" name="Pentanahan Tower - Realisasi Hari ini" placeholder="0" required>
+
+        <label for="pilihan">STATUS:</label>
+          <select class="status" id="pilihan-tower1" name="Pentanahan Tower - STATUS">
+            <option value="melebihi">Melebihi</option>
+            <option value="sesuai">Sesuai</option>
+            <option value="dibawah_target">Dibawah Target</option>
+          </select>
+
+        <h4>3. Anomali Isolator(String)</h4>
+
+        <label for="jumlah_anomali">Jumlah Anomali:</label>
+        <input class="input-number" id="sore-jumlah_anomali1" name="Isolator - Jumlah Anomali" placeholder="0" required>
+      
+        <label for="rtl">Rencana Tindak Lanjut:</label>
+        <input class="input-number" type="number" id="sore-rtl2" name="Isolator - Rencana Tindak lanjut" placeholder="0" required>
+
+        <label for="rhi">Rencana Hari Ini:</label>
+        <input class="input-number" type="number" id="sore-rhi1" name="Isolator - Rencana Hari ini" placeholder="0" required>
+
+        <label for="realisasi_hi">Realisasi Hari Ini:</label>
+        <input class="input-number" type="number" id="sore-realisasi_hi1" name="Isolator - Realisasi Hari ini" placeholder="0" required>
+
+        <label for="pilihan">STATUS:</label>
+          <select class="status" id="pilihan-isolator1" name="Isolator - STATUS">
+            <option value="melebihi">Melebihi</option>
+            <option value="sesuai">Sesuai</option>
+            <option value="dibawah_target">Dibawah Target</option>
+          </select>
+
+        <br><br><br><br>
+        <h3>B. ANOMALI HARGI</h3>
+        
+        <h4>1. Hotspot HV Peraltan Primer (Titik)</h4>
+
+        <label for="jumlah_anomali">Jumlah Anomali:</label>
+        <input class="input-number" type="number" id="sore-jumlah_anomali2" name="Hotspot HV - Jumlah Anomali" placeholder="0" required>
+      
+        <label for="rtl">Rencana Tindak Lanjut:</label>
+        <input class="input-number" type="number" id="sore-rtl3" name="Hotspot HV - Rencana Tindak lanjut" placeholder="0" required>
+
+        <label for="rhi">Rencana Hari Ini:</label>
+        <input class="input-number" type="number" id="sore-rhi2" name="Hotspot HV - Rencana Hari ini" placeholder="0" required>
+
+        <label for="realisasi_hi">Realisasi Hari Ini:</label>
+        <input class="input-number" type="number" id="sore-realisasi_hi2" name="Hotspot HV - Realisasi Hari ini" placeholder="0" required>
+
+        <label for="pilihan">STATUS:</label>
+          <select class="status" id="pilihan-hotspot1" name="Hotspot HV - STATUS">
+            <option value="melebihi">Melebihi</option>
+            <option value="sesuai">Sesuai</option>
+            <option value="dibawah_target">Dibawah Target</option>
+          </select>
+
+        <h4>2. Anomali MTU Non Hotspot (MTU)</h4>
+
+        <label for="jumlah_anomali">Jumlah Anomali:</label>
+        <input class="input-number" type="number" id="sore-jumlah_anomali3" name="MTU - Jumlah Anomali" placeholder="0" required>
+
+        <label for="rtl">Rencana Tindak Lanjut:</label>
+        <input class="input-number" type="number" id="sore-rtl4" name="MTU - Rencana Tindak lanjut" placeholder="0" required>
+
+        <label for="rhi">Rencana Hari Ini:</label>
+        <input class="input-number" type="number" id="sore-rhi3" name="MTU - Rencana Hari ini" placeholder="0" required>
+
+        <label for="realisasi_hi">Realisasi Hari Ini:</label>
+        <input class="input-number" type="number" id="sore-realisasi_hi3" name="MTU - Realisasi Hari ini" placeholder="0" required>
+
+        <label for="pilihan">STATUS:</label>
+          <select class="status" id="pilihan-mtu1" name="MTU - STATUS">
+            <option value="melebihi">Melebihi</option>
+            <option value="sesuai">Sesuai</option>
+            <option value="dibawah_target">Dibawah Target</option>
+          </select>
+
+        <h4>3. Pentanahan Gardu Induk (Titik)</h4>
+
+        <label for="jumlah_anomali">Jumlah Anomali:</label>
+        <input class="input-number" type="number" id="sore-jumlah_anomali4" name="Pentanahan GI - Jumlah Anomali" placeholder="0" required>
+
+        <label for="rtl">Rencana Tindak Lanjut:</label>
+        <input class="input-number" type="number" id="sore-rtl5" name="Pentanahan GI - Rencana Tindak lanjut" placeholder="0" required>
+
+        <label for="rhi">Rencana Hari Ini:</label>
+        <input class="input-number" type="number" id="sore-rhi4" name="Pentanahan GI - Rencana Hari ini" placeholder="0" required>
+
+        <label for="realisasi_hi">Realisasi Hari Ini:</label>
+        <input class="input-number" type="number" id="sore-realisasi_hi4" name="Pentanahan GI - Realisasi Hari ini" placeholder="0" required>
+
+        <label for="pilihan">STATUS:</label>
+          <select class="status" id="pilihan-pentanahan1" name="Pentanahan GI - STATUS">
+            <option value="melebihi">Melebihi</option>
+            <option value="sesuai">Sesuai</option>
+            <option value="dibawah_target">Dibawah Target</option>
+          </select>
+
+        <br><br><br><br>
+        <h3>C. ANOMALI HARPRO</h3>
+        <h4>1. Relay Error (Unit)</h4>
+
+        <label for="jumlah_anomali">Jumlah Anomali:</label>
+        <input class="input-number" type="number" id="sore-jumlah_anomali5" name="Relay - Jumlah Anomali" placeholder="0" required>
+
+        <label for="rtl">Rencana Tindak Lanjut:</label>
+        <input class="input-number" type="number" id="sore-rtl6" name="Relay - Rencana Tindak lanjut" placeholder="0" required>
+
+        <label for="rhi">Rencana Hari Ini:</label>
+        <input class="input-number" type="number" id="sore-rhi5" name="Relay - Rencana Hari ini" placeholder="0" required>
+
+        <label for="realisasi_hi">Realisasi Hari Ini:</label>
+        <input class="input-number" type="number" id="sore-realisasi_hi5" name="Relay - Realisasi Hari ini" placeholder="0" required>
+
+        <label for="pilihan">STATUS:</label>
+          <select class="status" id="pilihan-relay1" name="Relay - STATUS">
+            <option value="melebihi">Melebihi</option>
+            <option value="sesuai">Sesuai</option>
+            <option value="dibawah_target">Dibawah Target</option>
+          </select>
+
+        <h4>2. HotSpot Rangkaian Sekunder (Titik)</h4>
+
+        <label for="jumlah_anomali">Jumlah Anomali:</label>
+        <input class="input-number" type="number" id="sore-jumlah_anomali6" name="Hotspot Sekunder - Jumlah Anomali" placeholder="0" required>
+
+        <label for="rtl">Rencana Tindak Lanjut:</label>
+        <input class="input-number" type="number" id="sore-rtl7" name="Hotspot Sekunder - Rencana Tindak lanjut" placeholder="0" required>
+
+        <label for="rhi">Rencana Hari Ini:</label>
+        <input class="input-number" type="number" id="sore-rhi6" name="Hotspot Sekunder - Rencana Hari ini" placeholder="0" required>
+
+        <label for="realisasi_hi">Realisasi Hari Ini:</label>
+        <input class="input-number" type="number" id="sore-realisasi_hi6" name="Hotspot Sekunder - Realisasi Hari ini" placeholder="0" required>
+
+        <label for="pilihan">STATUS:</label>
+          <select class="status" id="pilihan-sekunder1" name="Hotspot Sekunder - STATUS">
+            <option value="melebihi">Melebihi</option>
+            <option value="sesuai">Sesuai</option>
+            <option value="dibawah_target">Dibawah Target</option>
+          </select>
+      </div>
+
+      <br><br>
+      <div class="center-button">
+        <button type="submit" id="submitButton">Kirim Laporan</button>
+      </div>
+    </form>
+
+    <p id="output"></p>
+
+    <script>
+      const menu = document.getElementById("menu");
+      const formPagi = document.getElementById("formPagi");
+      const formSore = document.getElementById("formSore");
+      const waktuPemeriksaan = document.getElementById("waktuPemeriksaan");
+
+      // Fungsi untuk mengatur atribut required berdasarkan form yang aktif
+      function toggleRequiredFields() {
+        // Dapatkan semua input dari form pagi dan sore
+        const pagiInputs = formPagi.querySelectorAll('[required]');
+        const soreInputs = formSore.querySelectorAll('[required]');
+        
+        if (menu.value === "pagi") {
+        // Aktifkan required pada form pagi
+        pagiInputs.forEach(input => input.required = true);
+        
+        // Nonaktifkan required pada form sore
+        soreInputs.forEach(input => input.required = false);
+        } else if (menu.value === "sore") {
+        // Nonaktifkan required pada form pagi
+        pagiInputs.forEach(input => input.required = false);
+        
+        // Aktifkan required pada form sore
+        soreInputs.forEach(input => input.required = true);
+        } else {
+        // Nonaktifkan semua required jika tidak ada form yang dipilih
+        pagiInputs.forEach(input => input.required = false);
+        soreInputs.forEach(input => input.required = false);
+        }
+      }
+
+      menu.addEventListener("change", function () {
+        if (menu.value === "pagi") {
+          formPagi.classList.remove("hidden");
+          formSore.classList.add("hidden");
+          waktuPemeriksaan.value = "Pagi";
+
+          // Disable all inputs in the sore form
+          const soreInputs = formSore.querySelectorAll('input, select');
+          soreInputs.forEach(input => input.disabled = true);
+            
+          // Enable all inputs in the pagi form
+          const pagiInputs = formPagi.querySelectorAll('input, select');
+          pagiInputs.forEach(input => input.disabled = false);
+        }
+        else if (menu.value === "sore") {
+          formPagi.classList.add("hidden");
+          formSore.classList.remove("hidden");
+          waktuPemeriksaan.value = "Sore";
+
+          // Disable all inputs in the sore form
+          const pagiInputs = formPagi.querySelectorAll('input, select');
+          pagiInputs.forEach(input => input.disabled = true);
+            
+          // Enable all inputs in the pagi form
+          const soreInputs = formSore.querySelectorAll('input, select');
+          soreInputs.forEach(input => input.disabled = false);
+        }
+        else {
+          formPagi.classList.add("hidden");
+          formSore.classList.add("hidden");
+          waktuPemeriksaan.value = "";
+
+          // Disable all inputs in the sore form
+          const soreInputs = formSore.querySelectorAll('input, select');
+          soreInputs.forEach(input => input.disabled = true);
+            
+          // Enable all inputs in the pagi form
+          const pagiInputs = formPagi.querySelectorAll('input, select');
+          pagiInputs.forEach(input => input.disabled = true);
+        }
+
+        // Panggil fungsi untuk mengatur required fields
+        toggleRequiredFields();
+      });
+
+      // Panggil fungsi saat halaman dimuat untuk mengatur status awal
+      toggleRequiredFields();
+
+      submitButton.addEventListener("click", function () {
+        submitButton.classList.add("clicked");
+        setTimeout(() => submitButton.classList.remove("clicked"), 300);
+      });
+
+      document.getElementById("anomaliForm").addEventListener("submit", function (e) {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        const dataObj = {};
+        formData.forEach((value, key) => {
+          dataObj[key] = value;
+        });
+
+        google.script.run.withSuccessHandler(function (response) {
+            // Tampilkan pesan sukses
+            const outputElement = document.getElementById("output");
+            outputElement.innerText = response.message || "Data berhasil dikirim!";
+            
+            // Tambahkan styling untuk memperjelas pesan sukses
+            outputElement.style.backgroundColor = "#d4edda";
+            outputElement.style.color = "#155724";
+            outputElement.style.padding = "10px";
+            outputElement.style.borderRadius = "5px";
+            outputElement.style.marginTop = "20px";
+            
+            // Hilangkan pesan setelah 5 detik
+            setTimeout(function() {
+            outputElement.innerText = "";
+            outputElement.style.backgroundColor = "";
+            outputElement.style.padding = "";
+            }, 5000);
+            
+            // Reset form
+            document.getElementById("anomaliForm").reset();
+            menu.dispatchEvent(new Event("change"));
+          })
+          .withFailureHandler(function (error) {
+            const outputElement = document.getElementById("output");
+            outputElement.innerText = "Gagal mengirim data: " + error.message;
+            
+            // Styling untuk pesan error
+            outputElement.style.backgroundColor = "#f8d7da";
+            outputElement.style.color = "#721c24";
+            outputElement.style.padding = "10px";
+            outputElement.style.borderRadius = "5px";
+            outputElement.style.marginTop = "20px";
+          })
+          .simpanData(dataObj);
+      });
+    </script>
+  </body>
+</html>
